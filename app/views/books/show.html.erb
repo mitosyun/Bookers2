@@ -1,0 +1,27 @@
+<main>
+  <p id="notice">Welcome! You have signed up successfully.</p>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+    <%= render 'list', books: @books %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Books detail</h2>
+        <table class="table">
+          <tbody>
+              <tr>
+                <td></td>
+                <td>
+                  <%= link_to(book_path(@book.id)) do %>
+                    <starong><%= @book.title %></starong>
+                  <% end %>
+                </td>
+                <td><%= @book.body %></td>
+                <td><%= link_to "Edit", edit_book_path(@book) %></td>
+                <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?" %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
