@@ -1,22 +1,27 @@
 <main>
-  <p id="notice">Welcome! You have signed up successfully.</p>
-  <div class="container px-5 px-sm-0">
+  <p id="notice"></p>
+  <div class="container">
     <div class="row">
-    <%= render 'list', book: @booknew,user: current_user %>
+      <%= render 'list', book: @booknew,user: current_user %>
       <div class="col-md-8 offset-md-1">
         <h2>Books detail</h2>
         <table class="table">
           <tbody>
               <tr>
-                <td><%= image_tag @book.user.get_profile_image(100,100) %></td>
+                <td>
+                  <%= link_to(user_path(@book.user)) do %>
+                    <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                    <%= @book.user.name %>
+                  <% end %>
+                </td>
                 <td>
                   <%= link_to(book_path(@book.id)) do %>
-                    <starong><%= @book.title %></starong>
+                    <%= @book.title %>
                   <% end %>
                 </td>
                 <td><%= @book.body %></td>
-                <td><%= link_to "Edit", edit_book_path(@book) %></td>
-                <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?" %></td>
+                <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success edit_book_206" %></td>
+                <td><%= link_to "Destroy", book_path(@book), class:"btn btn-sm btn-danger destroy_book_206", method: :delete, "data-confirm" => "Are you sure?" %></td>
               </tr>
           </tbody>
         </table>
