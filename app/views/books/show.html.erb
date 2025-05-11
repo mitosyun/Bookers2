@@ -1,5 +1,5 @@
 <main>
-  <p id="notice"></p>
+  <p id="notice"><%= flash[:notice] %></p>
   <div class="container">
     <div class="row">
       <%= render 'list', book: @booknew,user: current_user %>
@@ -20,8 +20,16 @@
                   <% end %>
                 </td>
                 <td><%= @book.body %></td>
-                <td><%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success edit_book_206" %></td>
-                <td><%= link_to "Destroy", book_path(@book), class:"btn btn-sm btn-danger destroy_book_206", method: :delete, "data-confirm" => "Are you sure?" %></td>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success edit_book_206" %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Destroy", book_path(@book), class:"btn btn-sm btn-danger destroy_book_206", method: :delete, "data-confirm" => "Are you sure?" %>
+                  <% end %>
+                </td>
               </tr>
           </tbody>
         </table>
