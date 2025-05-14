@@ -2,9 +2,9 @@
   <p id="notice"><%= flash[:notice] %></p>
   <div class="container">
     <div class="row">
-      <%= render 'list', book: @booknew,user: current_user %>
+      <%= render 'list', book: @booknew,user: @book.user %>
       <div class="col-md-8 offset-md-1">
-        <h2>Books detail</h2>
+        <h2>Book detail</h2>
         <table class="table">
           <tbody>
               <tr>
